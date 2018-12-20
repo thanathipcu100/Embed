@@ -123,7 +123,7 @@ int main(void)
   while(1){
   buffer[0]=0x10;
   HAL_I2C_Master_Transmit(&hi2c1,0x23<<1,buffer,1,100);
-  HAL_Delay(200);
+  HAL_Delay(500);
   HAL_I2C_Master_Receive(&hi2c1,0x23<<1,buffer,2,100);
   //receive 2 bytes, store into buffer[0] and buffer[1]
   //buffer[0] : MSB data
@@ -131,7 +131,7 @@ int main(void)
   sensorValue = (buffer[0]<<8 | buffer[1])/1.2; //combine 2 8-bit into 1 16bit
   controlLight(sensorValue);
   // ----------------Send to UART -------------------------------------
-  sprintf(buffer, "%d %d lux\r\n", sensorValue,isAutoLight());
+  sprintf(buffer, "%d lux\r\n", sensorValue);
   HAL_UART_Transmit(&huart2, buffer, strlen(buffer), 100);
   }
 }

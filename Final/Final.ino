@@ -15,6 +15,8 @@ String HOST_NAME = "http://pure-fortress-43600.herokuapp.com/";
 #define INPUT_ISON 14
 //D6
 #define INPUT_LIGHT 12
+//RX
+#define INPUT_LIGHTSENSOR_VALUE 3
 
 HTTPClient http;
 
@@ -25,6 +27,7 @@ void setup() {
   pinMode(OUTPUT_AUTOLIGHT, OUTPUT);
   pinMode(INPUT_ISON, INPUT);
   pinMode(INPUT_LIGHT, INPUT);
+  pinMode(INPUT_LIGHTSENSOR_VALUE, INPUT)
 }
 
 void workWithServer() {
@@ -34,6 +37,7 @@ void workWithServer() {
   JSONencoder["isOn"] = digitalRead(INPUT_ISON);
   JSONencoder["light"] = digitalRead(INPUT_LIGHT);
   JSONencoder["infrared"] = 0;
+  JSONencoder["sensorValue"] = Read
 
   char JSONmessageBuffer[50];
   JSONencoder.prettyPrintTo(JSONmessageBuffer, sizeof(JSONmessageBuffer));
